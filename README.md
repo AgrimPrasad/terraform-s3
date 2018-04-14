@@ -17,7 +17,7 @@ The end result is a website that supports:
 
 1. Install Terraform
 1. Configure your AWS profile
-1. `git clone git@github.com:alimac/terraform-s3-static-website.git`
+1. `git clone git@github.com:alimac/terraform-s3.git`
 1. `cd terraform-s3-static-website`
 1. `terraform apply`
 
