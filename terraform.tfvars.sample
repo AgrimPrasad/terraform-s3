@@ -1,0 +1,5 @@
+primary_domain = "example.com"
+
+secondary_domain = "www.example.com"
+
+aws_account = "{actual aws account number}"

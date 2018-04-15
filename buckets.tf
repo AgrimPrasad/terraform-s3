@@ -6,8 +6,16 @@ resource "aws_s3_bucket" "primary_domain" {
     enabled = true
   }
 
+  lifecycle {
+    prevent_destroy = true
+  }
+
   website {
     index_document = "index.html"
+  }
+
+  tags {
+    Name = "S3-${var.primary_domain}"
   }
 }
 
@@ -19,8 +27,33 @@ resource "aws_s3_bucket" "secondary_domain" {
     enabled = true
   }
 
+  lifecycle {
+    prevent_destroy = true
+  }
+
   website {
     redirect_all_requests_to = "https://${var.primary_domain}"
+  }
+
+  tags {
+    Name = "S3-${var.secondary_domain}"
+  }
+}
+
+# terraform state bucket
+resource "aws_s3_bucket" "terraform-state-storage-s3" {
+  bucket = "terraform-remote-state-backend-${var.aws_account}"
+
+  versioning {
+    enabled = true
+  }
+
+  lifecycle {
+    prevent_destroy = true
+  }
+
+  tags {
+    Name = "terraform-remote-state-backend-${var.aws_account}"
   }
 }
 

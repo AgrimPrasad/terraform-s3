@@ -5,3 +5,7 @@ variable "primary_domain" {
 variable "secondary_domain" {
   description = "Secondary domain"
 }
+
+variable "aws_account" {
+  description = "AWS Account managed by this terraform deployment"
+}
